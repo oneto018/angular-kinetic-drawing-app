@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en" ng-app="drawingApp">
+<head>
+	<meta charset="UTF-8">
+	<title>nw app</title>
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<!-- <link rel="stylesheet" href="css/bootstrap-responsive.min.css"> -->
+	<link rel="stylesheet" href="css/colorpicker.css">
+	<link rel="stylesheet" href="css/style.css">
+	<script src="js/jquery.min.js"></script>
+	
+
+	<script src="js/angular.min.js"></script>
+	<script src="js/bootstrap-colorpicker-module.js"></script>
+	<script src="js/script.js"></script>
+	<script src="js/kinetic-v5.0.1.min.js"></script>
+
+</head>
+<body ng-controller="MainCtl">
+	<div class="container-fluid">
+		<div class="row">
+			<div id="drawArea" nr-kinetic-canvas layer="kLayer" stage="kStage" class="col-sm-6">
+			</div>
+			<div class="col-sm-6">
+				<div class="col-sm-6">
+					<div class="panel panel-default">
+					  <div class="panel-heading">Shapes</div>
+					  <div class="panel-body">
+					  	<div id="shapesListContainer">
+					  		<div class="list-group">
+					  			<a ng-repeat="shape in kShapes" ng-click="edit($index)" ng-class="{active:(curIndex == $index)}" class="list-group-item" href="javascript:void(0)">
+					  				<strong>name:</strong>{{shape.id}} <strong>type:</strong>{{shape.knt.getClassName()}}
+					  			</a>
+					  		</div>
+					  	</div>
+					   	
+					  </div>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<div class="panel panel-default">
+						<div class="panel-heading">Tool properties</div>
+						<div class="panel-body">
+							<div atool config="tools['circle']" ng-model="circle1" submit="lg()" sbmtext="create" ng-hide="editing"></div>
+
+							<div atool config="tools['circle']" ng-model="kShapes[curIndex].obj"  submit="update();finishEditing();" sbmtext="update" ng-show="editing" atool-change="update()"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	
+	
+	
+</body>
+</html>

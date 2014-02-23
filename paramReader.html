@@ -1,0 +1,31 @@
+<div class="paramWrapper">
+	<div class="param-control" ng-repeat="prop in config.properties" ng-switch="prop.type">
+		<div class="animate-switch" ng-switch-when="number">
+			<label>{{prop.label}}</label>
+			<input type="number" ng-model="myModel[prop.name]" ng-change="atoolChange()" size="5" />
+		</div>
+		<div class="animate-switch" ng-switch-when="text">
+			<label>{{prop.label}}</label>
+			<input type="text" ng-model="myModel[prop.name]" ng-change="atoolChange()"  placeholder="{{prop.label}}" size="{{prop.size}}" />
+		</div>
+		<div class="animate-switch" ng-switch-when="color">
+			<label>{{prop.label}}</label>
+			<input type="text" colorpicker="hex" ng-model="myModel[prop.name]" ng-change="atoolChange()"  placeholder="{{prop.label}}" size="8" />
+		</div>
+		<div class="animate-switch" ng-switch-when="select">
+			<label>{{prop.label}}</label>
+			<select ng-model="myModel[prop.name]"  ng-change="atoolChange()" ng-options="opt[1] as opt[0] for opt in prop.options">
+				
+			</select>
+			
+		</div>
+		<div class="animate-switch" ng-switch-default>
+			<label>{{prop.label}}</label>
+			<input type="text" ng-model="myModel[prop.name]" ng-change="atoolChange()"  size="{{prop.size}}" />
+		</div>
+
+	</div>
+	<div>
+		<button class="btn btn-primary" ng-click="submit()">{{sbmtext}}</button>
+	</div>
+</div>
