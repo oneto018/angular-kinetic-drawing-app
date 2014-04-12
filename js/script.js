@@ -19,7 +19,7 @@ App.directive('atool',function(){
 					if(val.initial){
 						scope.myModel[val.name] = val.initial;
 					}
-				
+				}
 				
 				
 			}); */
